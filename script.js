@@ -90,16 +90,39 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  var passwordLength = prompt('Please enter the desired length of your password in numerical form between 10 and 64.');
+
+  var passwordLengthToInt = parseInt(passwordLength);
+
+  if(passwordLengthToInt < 10){
+    var warning = alert('Your desired length is too short. Please enter a number between 10 and 64');
+    getPasswordOptions();
+  } else if(passwordLengthToInt > 64){
+    var warning = alert('Your desired length is too long. Please enter a number between 10 and 64');
+    getPasswordOptions();
+  }
+
+
+  var hasLowerCase = confirm('Would you like your password to contain lower case characters?');
+  var hasUpperCase = confirm('Would you like your password to contain uppercase characters?');
+  var hasSpecialCharacter = confirm('Would you like your password to contain special characters?');
+
   
+
+  var optionsArr = [passwordLengthToInt, hasLowerCase, hasUpperCase, hasSpecialCharacter];
+  
+  console.log(optionsArr);
+  return optionsArr;
 }
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  randIndex = arr[Math.floor(Math.random() * arr.length)];
 }
 
 // Function to generate password with user input
 function generatePassword() {
+  let passwordOptions = getPasswordOptions();
 
 }
 
@@ -116,3 +139,5 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+getPasswordOptions();
