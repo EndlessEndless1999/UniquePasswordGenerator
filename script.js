@@ -133,14 +133,26 @@ function getRandom(arr) {
 function generatePassword() {
   let passwordOptions = getPasswordOptions();
 
+  let upCase = false;
+  let downCase = false;
+  let specialChar = false;
+
   console.log(passwordOptions);
 
-  for(let i = 0; i < passwordOptions; i++){
-    if(passwordOptions[i] === false){
-      passwordOptions.splice(i, 1);
-    }
-    console.log(passwordOptions);
+  if(passwordOptions[0] === true){
+    upCase = true;
   }
+  if(passwordOptions[1] === true){
+    downCase = true;
+  }
+  if(passwordOptions[2] === true){
+    specialChar = true;
+  }
+  if(upCase === false && downCase === false && specialChar === false){
+    downCase = true;
+  }
+
+
 
   for(let i = 0; i < myPasswordLength.length; i++){
 
