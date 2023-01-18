@@ -131,32 +131,36 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
+  let password = '';
   let passwordOptions = getPasswordOptions();
-
-  let upCase = false;
-  let downCase = false;
-  let specialChar = false;
 
   console.log(passwordOptions);
 
-  if(passwordOptions[0] === true){
-    upCase = true;
+  if(passwordOptions[0] === false){
+    choiceArr.splice(2, 1);
   }
-  if(passwordOptions[1] === true){
-    downCase = true;
+  if(passwordOptions[1] === false){
+    choiceArr.splice(1, 1);
   }
-  if(passwordOptions[2] === true){
-    specialChar = true;
-  }
-  if(upCase === false && downCase === false && specialChar === false){
-    downCase = true;
+  if(passwordOptions[2] === false){
+    choiceArr.splice(0, 1);
   }
 
 
 
-  for(let i = 0; i < myPasswordLength.length; i++){
+
+
+  for(let i = 0; i < myPasswordLength; i++){
+    var randomArr = getRandom(choiceArr);
+    var character = getRandom(randomArr);
+
+    password += character;
+
+    console.log(password);
 
   }
+
+  return password;
 
 }
 
