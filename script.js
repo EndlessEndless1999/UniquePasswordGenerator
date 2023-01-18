@@ -88,6 +88,10 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+var myPasswordLength;
+
+var choiceArr = [specialCharacters, upperCasedCharacters, lowerCasedCharacters, numericCharacters];
+
 // Function to prompt user for password options
 function getPasswordOptions() {
   var passwordLength = prompt('Please enter the desired length of your password in numerical form between 10 and 64.');
@@ -102,6 +106,10 @@ function getPasswordOptions() {
     getPasswordOptions();
   }
 
+  myPasswordLength = passwordLengthToInt;
+
+
+
 
   var hasLowerCase = confirm('Would you like your password to contain lower case characters?');
   var hasUpperCase = confirm('Would you like your password to contain uppercase characters?');
@@ -109,20 +117,34 @@ function getPasswordOptions() {
 
   
 
-  var optionsArr = [passwordLengthToInt, hasLowerCase, hasUpperCase, hasSpecialCharacter];
+  var optionsArr = [hasLowerCase, hasUpperCase, hasSpecialCharacter];
   
-  console.log(optionsArr);
   return optionsArr;
 }
 
 // Function for getting a random element from an array
 function getRandom(arr) {
   randIndex = arr[Math.floor(Math.random() * arr.length)];
+
+  return randIndex;
 }
 
 // Function to generate password with user input
 function generatePassword() {
   let passwordOptions = getPasswordOptions();
+
+  console.log(passwordOptions);
+
+  for(let i = 0; i < passwordOptions; i++){
+    if(passwordOptions[i] === false){
+      passwordOptions.splice(i, 1);
+    }
+    console.log(passwordOptions);
+  }
+
+  for(let i = 0; i < myPasswordLength.length; i++){
+
+  }
 
 }
 
@@ -139,5 +161,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
-
-getPasswordOptions();
