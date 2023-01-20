@@ -88,11 +88,14 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+//Empty Variable that stores password length
 var myPasswordLength;
 
+//variable that caches the different arrays. It is used to reset the application.
 var choiceArr = [specialCharacters, upperCasedCharacters, lowerCasedCharacters, numericCharacters];
 
 // Function to prompt user for password options
+//Checks that password length is a acceptable number. Sets paramaters and contains a default to back up to.
 function getPasswordOptions() {
   var passwordLength = prompt('Please enter the desired length of your password in numerical form between 10 and 64.');
 
@@ -130,6 +133,8 @@ function getRandom(arr) {
 }
 
 // Function to generate password with user input
+//Main function of application. Gets Options, then removes options from array depending on user input.
+//Then concatenates password string with random index from the arrays that contain characters depending on parameters chosen.
 function generatePassword() {
   let password = '';
   let passwordOptions = getPasswordOptions();
@@ -164,6 +169,7 @@ function generatePassword() {
 
 }
 
+//Refreshes Application by resetting necessary variables to their cached values.
 function refreshGenerator() {
   myPasswordLength = 0;
 
